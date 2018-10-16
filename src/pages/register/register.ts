@@ -17,11 +17,7 @@ export class RegisterPage {
     this._use.register(this.user)
     .subscribe((res) => {
       console.log(res);  
-    });
-    this.goMaps();
-  }
-  goMaps(){
-    this.app.getRootNav().setRoot(MapsPage, {}, {animate: true, direction: 'forward'});
-  }
-  
+      this._use.goMaps(res, MapsPage);
+    }); 
+  }  
 }

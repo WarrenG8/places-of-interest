@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { App } from 'ionic-angular';
 
 /*
   Generated class for the UserProvider provider.
@@ -10,7 +11,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserProvider {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public app: App) {
   }
 
   url = 'http://localhost:3000/api/AppUsers';
@@ -21,6 +22,12 @@ export class UserProvider {
 
   register(user) {
     return this.http.post(this.url, user);
+  }
+
+  goMaps(resData, page){
+    window.sessionStorage.setItem( "token", resData.token);
+    window.sessionStorage.setItem( "userId", resData.userId);
+    this.app.getRootNav().setRoot(page, {}, {animate: true, direction: 'forward'});
   }
 
 }
