@@ -19,4 +19,8 @@ export class UserProvider {
     return this.http.post(this.url + '/login', data);
   }
 
+  register(user) {
+    return this.http.post(this.url, user);
+  }
+
 }
