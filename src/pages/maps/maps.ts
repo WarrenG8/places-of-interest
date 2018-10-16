@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the MapsPage page.
@@ -15,11 +17,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MapsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public _use: UserProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapsPage');
+  }
+
+  logout(){
+    this._use.logout()
+    .subscribe((res) => { 
+      console.log(res);
+      this._use.goMaps(res, LoginPage);
+    });
   }
 
 }

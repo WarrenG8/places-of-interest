@@ -25,9 +25,18 @@ export class UserProvider {
   }
 
   goMaps(resData, page){
-    window.sessionStorage.setItem( "token", resData.token);
-    window.sessionStorage.setItem( "userId", resData.userId);
+    if (resData !== null) {
+      window.sessionStorage.setItem( "token", resData.token);
+      window.sessionStorage.setItem( "userId", resData.userId);
+    }
     this.app.getRootNav().setRoot(page, {}, {animate: true, direction: 'forward'});
+  }
+
+  logout(){
+    let token = window.sessionStorage.getItem("token");
+    console.log(token);
+    window.sessionStorage.clear();
+    return this.http.post(this.url + '/logout?access_token=' + token, {});
   }
 
 }
