@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -10,8 +10,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserProvider {
 
-  constructor(private http: HttpClientModule) {
-    // console.log('Hello UserProvider Provider');
+  constructor(private http: HttpClient) {
+  }
+
+  url = 'http://localhost:3000/api/AppUsers';
+
+  login(data) {
+    return this.http.post(this.url + '/login', data);
   }
 
 }

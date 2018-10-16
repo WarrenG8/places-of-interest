@@ -6,6 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { MapsPage } from '../pages/maps/maps';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +17,8 @@ import { UserProvider } from '../providers/user/user';
   declarations: [
     MyApp,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    MapsPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { UserProvider } from '../providers/user/user';
   entryComponents: [
     MyApp,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    MapsPage
   ],
   providers: [
     StatusBar,
