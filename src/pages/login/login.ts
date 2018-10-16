@@ -26,6 +26,5 @@ export class LoginPage {
   goMaps(){
     this.app.getRootNav().setRoot(MapsPage, {}, {animate: true, direction: 'forward'});
   }
-
-
+  
 }
