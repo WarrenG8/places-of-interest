@@ -10,7 +10,7 @@ import { UserProvider } from '../../providers/user/user';
 export class LoginPage {
   yes;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public _use: UserProvider) {
   }
 
 }

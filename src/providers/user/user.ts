@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserProvider {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClientModule) {
     // console.log('Hello UserProvider Provider');
   }
 
