@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { MapProvider } from '../../providers/map/map';
-// import { LoginPage } from '../login/login';
+import { LoginPage } from '../login/login';
 // import { Geolocation } from 'ionic-native';
 
 /**
@@ -24,6 +24,13 @@ export class MapsPage {
     this._map.loadMap();
   }
 
+  logout(){
+    this._use.logout()
+    .subscribe((res) => { 
+      console.log(res);
+      this._use.goMaps(res, LoginPage);
+    });
+  }
   
 }
 

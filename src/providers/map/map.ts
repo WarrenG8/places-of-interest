@@ -13,7 +13,6 @@ declare var google;
 export class MapProvider {
 
   map: any;
-  // url = '"https://maps.googleapis.com/maps/api/js?key=AIzaSyDHnwasWv7pFx7mWbH5098g8I367NLkbdc&callback=initMap"'
 
   constructor(public http: HttpClient) {
     console.log('Hello MapProvider Provider');
