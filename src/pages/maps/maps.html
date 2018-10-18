@@ -12,11 +12,12 @@
       </button>
     <ion-title>Places of Interest</ion-title>
     <!-- <button ion-button id="logout" (click)="logout()" (press)="logout()">Logout</button> -->
-  </ion-navbar>
-  
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-buttons end>
+        <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+      </ion-buttons> 
+    </ion-navbar>
+  </ion-header>
+   
+  <ion-content>
+    <div #map id="map_canvas"></div> 
+  </ion-content>
