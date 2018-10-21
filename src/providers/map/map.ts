@@ -26,18 +26,36 @@ export class MapProvider {
  
       let mapOptions = {
         center: latLng,
-        zoom: 13,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
  
       this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-      let marker = new google.maps.Marker({
-        position: latLng,
-        map: this.map,
-        title: 'Hello World!'
-      });
-      marker.setMap(this.map);
+      let createMarker = (pos) => {
+        let marker = new google.maps.Marker({
+          position: pos,
+          title: 'Hello World!'
+        });
+        marker.setMap(this.map);
+      }
+
+      let currentLocation = createMarker(latLng);
+
+      let request = {
+        location: latLng,
+        radius: 1000,
+        type: ['point_of_interest']
+      };
+
+      let callback = (results, status) => {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          return results.forEach(x => createMarker(x.geometry.location));
+        }
+      }
+  
+      let service = new google.maps.places.PlacesService(this.map);
+      service.nearbySearch(request, callback);      
  
     }, (err) => {
       console.log(err);
