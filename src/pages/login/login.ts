@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { MapsPage } from '../maps/maps';
+import { RegisterPage } from '../register/register';
 
 @Component({
   selector: 'page-login',
@@ -21,6 +22,10 @@ export class LoginPage {
       console.log(res); 
       this._use.goMaps(res, MapsPage); 
     });
+  }
+
+  routeToRegister() {
+    this.navCtrl.setRoot(RegisterPage); 
   }
   
 }

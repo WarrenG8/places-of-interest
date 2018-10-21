@@ -11,6 +11,8 @@ import { App } from 'ionic-angular';
 @Injectable()
 export class UserProvider {
 
+  // loggedIn: boolean = false;
+
   constructor(private http: HttpClient, public app: App) {
   }
 

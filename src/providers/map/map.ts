@@ -14,6 +14,7 @@ declare var google;
 export class MapProvider {
 
   map: any;
+  nearbyPlacesArr = [];
 
   constructor(public http: HttpClient, public geolocation: Geolocation) {
   }
@@ -48,14 +49,18 @@ export class MapProvider {
         type: ['point_of_interest']
       };
 
+      
       let callback = (results, status) => {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          return results.forEach(x => createMarker(x.geometry.location));
+          return results.forEach(x => {
+            createMarker(x.geometry.location);
+            this.nearbyPlacesArr.push(x.name);
+          });
         }
       }
   
       let service = new google.maps.places.PlacesService(this.map);
-      service.nearbySearch(request, callback);      
+      service.nearbySearch(request, callback);     
  
     }, (err) => {
       console.log(err);

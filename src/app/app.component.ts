@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { MapProvider } from '../providers/map/map';
+// import { UserProvider } from '../providers/user/user'
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +18,10 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  nearbyPlacesArr;
+
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public map : MapProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -25,6 +30,9 @@ export class MyApp {
       { title: 'Register', component: RegisterPage }
     ];
 
+    this.nearbyPlacesArr = this.map.nearbyPlacesArr;
+    // this.userLoggedIn = this.user.loggedIn;
+    // console.log(this.userLoggedIn);
   }
 
   initializeApp() {
