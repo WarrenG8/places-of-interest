@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /*
   Generated class for the MapProvider provider.
@@ -14,31 +15,32 @@ export class MapProvider {
 
   map: any;
 
-  constructor(public http: HttpClient) {
-    console.log('Hello MapProvider Provider');
+  constructor(public http: HttpClient, public geolocation: Geolocation) {
   }
-
+ 
   loadMap(){
  
-    let locationOptions = {timeout: 20000, enableHighAccuracy: true};
+    this.geolocation.getCurrentPosition().then((position) => {
  
-    navigator.geolocation.getCurrentPosition(
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
  
-        (position) => {
+      let mapOptions = {
+        center: latLng,
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
  
-            let options = {
-              center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-              zoom: 16,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
- 
-            this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
-        },
- 
-        (error) => {
-            console.log(error);
-        }, locationOptions
-    );
-  }
+      this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
+      let marker = new google.maps.Marker({
+        position: latLng,
+        map: this.map,
+        title: 'Hello World!'
+      });
+      marker.setMap(this.map);
+ 
+    }, (err) => {
+      console.log(err);
+    });
+  }
 }

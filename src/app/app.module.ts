@@ -10,6 +10,7 @@ import { MapsPage } from '../pages/maps/maps';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Geolocation } from '@ionic-native/geolocation';
 import { MapProvider } from '../providers/map/map';
 import { UserProvider } from '../providers/user/user';
 
@@ -37,7 +38,8 @@ import { UserProvider } from '../providers/user/user';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MapProvider,
-    UserProvider
+    UserProvider,
+    Geolocation
   ]
 })
 export class AppModule {}
