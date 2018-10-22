@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
+import { NgZone } from '@angular/core'
 
 /*
   Generated class for the MapProvider provider.
@@ -16,9 +17,9 @@ export class MapProvider {
   map: any;
   nearbyPlacesArr = [];
 
-  constructor(public http: HttpClient, public geolocation: Geolocation) {
+  constructor(public http: HttpClient, public geolocation: Geolocation, public ngZone: NgZone) {
   }
- 
+
   loadMap(){
  
     this.geolocation.getCurrentPosition().then((position) => {
@@ -33,35 +34,54 @@ export class MapProvider {
  
       this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-      let createMarker = (pos) => {
+      let createMarker = (pos, name, markerColor) => {
+        let imgUrl = "http://maps.google.com/mapfiles/ms/icons/";
+        imgUrl += markerColor + "-dot.png";
+
+        let infowindow = new google.maps.InfoWindow();
+
         let marker = new google.maps.Marker({
           position: pos,
-          title: 'Hello World!'
+          title: 'Hello World!',
+          icon: {
+            url: imgUrl
+          }
+        });
+        marker.addListener('click', function() {
+            infowindow.setContent(name);
+            infowindow.open(this.map, this);
+            setTimeout( _ => infowindow.close(), 3000);
         });
         marker.setMap(this.map);
+
+        
       }
 
-      let currentLocation = createMarker(latLng);
+      let currentLocation = createMarker(latLng, "Current Location", "green");
 
       let request = {
         location: latLng,
-        radius: 1000,
-        type: ['point_of_interest']
+        radius: 1100,
+        type: ['restaurant']
       };
 
       
       let callback = (results, status) => {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           return results.forEach(x => {
-            createMarker(x.geometry.location);
-            this.nearbyPlacesArr.push(x.name);
+            if(x.rating > 4) {
+              console.log(x);
+              createMarker(x.geometry.location, x.name,"red");
+              this.nearbyPlacesArr.push(x.name);
+            }
           });
         }
       }
   
       let service = new google.maps.places.PlacesService(this.map);
-      service.nearbySearch(request, callback);     
- 
+      service.nearbySearch(request, callback);
+      
+      
     }, (err) => {
       console.log(err);
     });
