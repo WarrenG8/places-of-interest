@@ -6,8 +6,8 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let place of nearbyPlacesArr">
-        {{place}}
+      <button menuClose ion-item *ngFor="let place of this.nearbyPlacesArr" (click)="openWindow(place)">
+        {{place.name}}
       </button>
     </ion-list>
   </ion-content>
