@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { MapProvider } from '../providers/map/map';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { Keyboard } from '@ionic-native/keyboard';
 
 declare var google;
 @Component({
@@ -27,7 +28,8 @@ export class MyApp {
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen, 
     public map : MapProvider,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    public keyboard: Keyboard
     ) {
     this.initializeApp();
 
@@ -42,6 +44,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
+      this.keyboard.hide();
       this.splashScreen.hide();
       this.screenOrientation
       .lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)

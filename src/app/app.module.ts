@@ -14,6 +14,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { MapProvider } from '../providers/map/map';
 import { UserProvider } from '../providers/user/user';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     MapProvider,
     UserProvider,
     Geolocation,
-    ScreenOrientation
+    ScreenOrientation,
+    Keyboard
   ]
 })
 export class AppModule {}
