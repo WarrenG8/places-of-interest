@@ -46,11 +46,15 @@ export class MapProvider {
           }
         });
         marker.addListener('click', function() {
-            // marker.icon.url = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+            marker.icon.url = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
             infowindow.setContent(name);
             infowindow.open(this.map, this);
-            setTimeout( _ => infowindow.close(), 3000);
-              // marker.icon.url = imgUrl;  
+            setTimeout( _ => {
+              infowindow.close();
+              marker.icon.url = imgUrl;
+            }, 3000)
+            
+                
         });
         marker.setMap(this.map);    
         if(name !== 'Current Location') {
@@ -58,20 +62,18 @@ export class MapProvider {
         }
       }
 
-      let currentLocation = createMarker(latLng, "Current Location", "green");
+      createMarker(latLng, "Current Location", "green");
 
       let request = {
         location: latLng,
         radius: 1100,
         type: ['restaurant']
       };
-
-      // let myClick = (id) => google.maps.event.trigger(marker[id], 'click');
       
       let callback = (results, status) => {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           return results.forEach(x => {
-            if(x.rating > 4) {
+            if(x.rating >= 4.1) {
               createMarker(x.geometry.location, x.name,"red");
             }
           });
