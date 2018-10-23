@@ -9,11 +9,10 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { Keyboard } from '@ionic-native/keyboard';
 
 declare var google;
+
 @Component({
   templateUrl: 'app.html'
 })
-
-
 
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -24,7 +23,8 @@ export class MyApp {
 
   nearbyPlacesArr;
 
-  constructor(public platform: Platform, 
+  constructor(
+    public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen, 
     public map : MapProvider,
@@ -32,11 +32,7 @@ export class MyApp {
     public keyboard: Keyboard
     ) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-
     this.nearbyPlacesArr = this.map.nearbyPlacesArr;
-
   }
 
   initializeApp() {
@@ -54,8 +50,6 @@ export class MyApp {
   }
 
   openWindow(place) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     google.maps.event.trigger(place.marker, 'click');
   }
 }

@@ -16,12 +16,10 @@ export class LoginPage {
     
   }
 
- 
-
   login(user) {
     this._use.login(this.user)
     .subscribe((res) => {
-      console.log(res); 
+      console.log(res);
       this._use.goMaps(res, MapsPage); 
     });
   }

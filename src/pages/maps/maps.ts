@@ -3,8 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { MapProvider } from '../../providers/map/map';
 import { LoginPage } from '../login/login';
-// import { Geolocation } from 'ionic-native';
-
 /**
  * Generated class for the MapsPage page.
  *

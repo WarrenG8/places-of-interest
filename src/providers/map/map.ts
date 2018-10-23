@@ -33,6 +33,8 @@ export class MapProvider {
  
       this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
+      let activeInfoWindow;
+
       let createMarker = (pos, name, markerColor) => {
         let imgUrl = "http://maps.google.com/mapfiles/ms/icons/";
         imgUrl += markerColor + "-dot.png";
@@ -45,21 +47,23 @@ export class MapProvider {
             url: imgUrl
           }
         });
+        
         marker.addListener('click', function() {
-            marker.icon.url = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
-            infowindow.setContent(name);
-            infowindow.open(this.map, this);
-            setTimeout( _ => {
-              infowindow.close();
-              marker.icon.url = imgUrl;
-            }, 3000)
-            
-                
-        });
+          if (activeInfoWindow) {
+            activeInfoWindow.close();
+          } 
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+          setTimeout(_ => marker.setAnimation(null), 700);
+          infowindow.setContent(name);
+          infowindow.open(this.map, marker);
+          activeInfoWindow = infowindow;             
+      });
+
         marker.setMap(this.map);    
         if(name !== 'Current Location') {
           this.nearbyPlacesArr.push({'name': name, 'marker' : marker});
         }
+       
       }
 
       createMarker(latLng, "Current Location", "green");
@@ -79,14 +83,12 @@ export class MapProvider {
           });
         }
       }
-  
+
       let service = new google.maps.places.PlacesService(this.map);
       service.nearbySearch(request, callback);
 
     }, (err) => {
       console.log(err);
-    });
-
-    
+    });  
   }
 }

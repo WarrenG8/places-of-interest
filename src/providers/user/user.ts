@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { App } from 'ionic-angular';
+// import { NavController } from 'ionic-angular';
 
 /*
   Generated class for the UserProvider provider.
@@ -31,7 +32,7 @@ export class UserProvider {
       window.sessionStorage.setItem( "token", resData.token);
       window.sessionStorage.setItem( "userId", resData.userId);
     }
-    this.app.getRootNav().setRoot(page, {}, {animate: true, direction: 'forward'});
+    this.app.getRootNavs()[0].setRoot(page, {}, {animate: true, direction: 'forward'});
   }
 
   logout(){
