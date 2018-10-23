@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapProvider } from '../providers/map/map';
 import { UserProvider } from '../providers/user/user';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserProvider } from '../providers/user/user';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MapProvider,
     UserProvider,
-    Geolocation
+    Geolocation,
+    ScreenOrientation
   ]
 })
 export class AppModule {}

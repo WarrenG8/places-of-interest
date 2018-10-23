@@ -85,4 +85,6 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
+    <plugin name="ionic-plugin-keyboard" spec="2.2.1" />
+    <plugin name="cordova-plugin-screen-orientation" spec="3.0.1" />
 </widget>

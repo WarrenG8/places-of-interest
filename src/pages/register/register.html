@@ -1,13 +1,49 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button> 
-    <ion-title>Register</ion-title>
-  </ion-navbar>
-</ion-header> -->
+<ion-content padding text-center class="login">
+  <ion-grid style="height: 100%">
+    <ion-row align-items-center>
+      <ion-col col-12 align-items-center class="logo" style="min-height: 200px; width: 100%">
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center style="min-height: 15px">
+      <ion-col col-12>
+        <ion-item>
+          <ion-input type="text" placeholder="First Name" [(ngModel)]="user.firstName"></ion-input>
+        </ion-item> 
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center style="min-height: 15px">
+      <ion-col col-12>
+        <ion-item>
+          <ion-input type="text" placeholder="Last Name" [(ngModel)]="user.lastName"></ion-input>
+        </ion-item> 
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center style="min-height: 15px">
+      <ion-col col-12>
+        <ion-item>
+          <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+        </ion-item> 
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center >
+      <ion-col col-12>
+        <ion-item>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="user.password" (keyup.enter)="register()"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-12>
+        <button ion-button (click)="register()" (press)="register()" full color="dark">Register</button>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-12>
+        <button ion-button (click)="routeToLogin()" (press)="routeToLogin()" full color="dark">Already have an account? Sign In</button>
 
-<ion-content padding text-center style="margin: auto" class="login">
+
+
+<!-- <ion-content padding text-center style="margin: auto" class="login">
     <ion-img width="75%" height="105px" src="./assets/imgs/bomb.com-logo.png"></ion-img>
   <ion-list>
     <ion-item>
@@ -32,4 +68,4 @@
   
   </ion-list>
   <button ion-button (click)="register()" (press)="register()" full color="dark">Register</button>
-</ion-content>
+</ion-content> -->

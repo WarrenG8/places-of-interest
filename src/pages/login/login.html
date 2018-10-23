@@ -1,21 +1,17 @@
-
 <ion-content padding text-center class="login">
   <ion-grid style="height: 100%">
     <ion-row align-items-center>
-      <!-- <ion-col col-12 align-items-center style="height: 150px">
-          <ion-img src="./assets/imgs/bigger-bomb-logo.jpg"></ion-img>
-      </ion-col> -->
-      <ion-col col-12 align-items-center class="logo" style="min-height: 200px; width: 100%">
+      <ion-col col-12 align-items-center class="logo" style="min-height: 275px; width: 100%">
       </ion-col>
     </ion-row>
-    <ion-row align-items-center style="min-height: 15px">
+    <ion-row align-items-center>
       <ion-col col-12>
         <ion-item>
           <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
         </ion-item> 
       </ion-col>
     </ion-row>
-    <ion-row align-items-center >
+    <ion-row align-items-center>
       <ion-col col-12>
         <ion-item>
           <ion-input type="password" placeholder="Password" [(ngModel)]="user.password" (keyup.enter)="login()"></ion-input>

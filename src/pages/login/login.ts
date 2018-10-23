@@ -13,8 +13,10 @@ export class LoginPage {
   user = {};
 
   constructor(public navCtrl: NavController, public _use: UserProvider) {
-  
+    
   }
+
+ 
 
   login(user) {
     this._use.login(this.user)

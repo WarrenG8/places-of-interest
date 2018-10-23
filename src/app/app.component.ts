@@ -4,9 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
 import { MapProvider } from '../providers/map/map';
-// import { UserProvider } from '../providers/user/user'
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 declare var google;
 @Component({
@@ -24,7 +23,12 @@ export class MyApp {
 
   nearbyPlacesArr;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public map : MapProvider) {
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen, 
+    public map : MapProvider,
+    private screenOrientation: ScreenOrientation
+    ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -39,7 +43,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-    });
+      this.screenOrientation
+      .lock(this.screenOrientation.ORIENTATIONS.PORTRAIT)
+      .then(status => console.log(status))
+      .catch (e => console.log(e));
+      });
   }
 
   openWindow(place) {
