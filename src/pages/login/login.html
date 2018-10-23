@@ -1,28 +1,37 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button> 
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header> -->
 
-<ion-content padding>
-  <!-- <h3>Login</h3> -->
-  
-  <ion-list>
-
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="user.email"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password" (keyup.enter)="login()"></ion-input>
-    </ion-item>
-  
-  </ion-list>
-  <button ion-button (click)="login()" (press)="login()">Sign In</button>
-  <button ion-button (click)="routeToRegister()" (press)="routeToRegister()">Don't have an account. Please register instead.</button>
+<ion-content padding text-center class="login">
+  <ion-grid style="height: 100%">
+    <ion-row align-items-center>
+      <!-- <ion-col col-12 align-items-center style="height: 150px">
+          <ion-img src="./assets/imgs/bigger-bomb-logo.jpg"></ion-img>
+      </ion-col> -->
+      <ion-col col-12 align-items-center class="logo" style="min-height: 200px; width: 100%">
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center style="min-height: 15px">
+      <ion-col col-12>
+        <ion-item>
+          <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+        </ion-item> 
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center >
+      <ion-col col-12>
+        <ion-item>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="user.password" (keyup.enter)="login()"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-12>
+        <button ion-button (click)="login()" (press)="login()" full color="dark">Sign In</button>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-12>
+        <button ion-button (click)="routeToRegister()" (press)="routeToRegister()" full color="dark">Register</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

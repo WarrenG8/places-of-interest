@@ -1,13 +1,14 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
-    <!-- <button ion-button menuToggle>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button> -->
+    </button> 
     <ion-title>Register</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
+<ion-content padding text-center style="margin: auto" class="login">
+    <ion-img width="75%" height="105px" src="./assets/imgs/bomb.com-logo.png"></ion-img>
   <ion-list>
     <ion-item>
       <ion-label floating>First Name</ion-label>
@@ -30,5 +31,5 @@
     </ion-item>
   
   </ion-list>
-  <button ion-button (click)="register()" (press)="register()">Register</button>
+  <button ion-button (click)="register()" (press)="register()" full color="dark">Register</button>
 </ion-content>
