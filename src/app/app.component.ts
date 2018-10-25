@@ -39,7 +39,7 @@ export class MyApp {
     this.initializeApp();
     this.nearbyPlacesArr = this.map.nearbyPlacesArr;
     events.subscribe('user:created', (user, time) => {
-      // user and time are the same arguments passed in `events.publish(user, time)`
+      // refreshes side menu on logout
       this.nearbyPlacesArr.length = 0;
     });
   }
