@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { MapsPage } from '../maps/maps';
 import { RegisterPage } from '../register/register';
+import { MenuController} from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -12,8 +13,8 @@ import { RegisterPage } from '../register/register';
 export class LoginPage {
   user = {};
 
-  constructor(public navCtrl: NavController, public _use: UserProvider) {
-    
+  constructor(public navCtrl: NavController, public _use: UserProvider, public menuCtrl: MenuController) {
+    this.menuCtrl.enable(false, 'myMenu');
   }
 
   login(user) {

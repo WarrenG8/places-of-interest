@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { App } from 'ionic-angular';
-// import { NavController } from 'ionic-angular';
-
 /*
   Generated class for the UserProvider provider.
 
@@ -11,8 +9,6 @@ import { App } from 'ionic-angular';
 */
 @Injectable()
 export class UserProvider {
-
-  // loggedIn: boolean = false;
 
   constructor(private http: HttpClient, public app: App) {
   }

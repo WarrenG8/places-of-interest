@@ -7,6 +7,8 @@ import { LoginPage } from '../pages/login/login';
 import { MapProvider } from '../providers/map/map';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { Keyboard } from '@ionic-native/keyboard';
+import { UserProvider } from '../providers/user/user';
+
 
 declare var google;
 
@@ -22,6 +24,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   nearbyPlacesArr;
+  loggedIn;
 
   constructor(
     public platform: Platform, 
@@ -29,7 +32,8 @@ export class MyApp {
     public splashScreen: SplashScreen, 
     public map : MapProvider,
     private screenOrientation: ScreenOrientation,
-    public keyboard: Keyboard
+    public keyboard: Keyboard,
+    public _user: UserProvider
     ) {
     this.initializeApp();
     this.nearbyPlacesArr = this.map.nearbyPlacesArr;
