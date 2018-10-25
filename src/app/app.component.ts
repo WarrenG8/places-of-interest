@@ -8,7 +8,7 @@ import { MapProvider } from '../providers/map/map';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { Keyboard } from '@ionic-native/keyboard';
 import { UserProvider } from '../providers/user/user';
-
+import { Events } from 'ionic-angular';
 
 declare var google;
 
@@ -33,10 +33,15 @@ export class MyApp {
     public map : MapProvider,
     private screenOrientation: ScreenOrientation,
     public keyboard: Keyboard,
-    public _user: UserProvider
+    public _user: UserProvider,
+    public events: Events
     ) {
     this.initializeApp();
     this.nearbyPlacesArr = this.map.nearbyPlacesArr;
+    events.subscribe('user:created', (user, time) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      this.nearbyPlacesArr.length = 0;
+    });
   }
 
   initializeApp() {

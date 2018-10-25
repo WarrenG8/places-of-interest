@@ -4,6 +4,7 @@ import { UserProvider } from '../../providers/user/user';
 import { MapsPage } from '../maps/maps';
 import { RegisterPage } from '../register/register';
 import { MenuController} from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -13,8 +14,12 @@ import { MenuController} from 'ionic-angular';
 export class LoginPage {
   user = {};
 
-  constructor(public navCtrl: NavController, public _use: UserProvider, public menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, public _use: UserProvider, public menuCtrl: MenuController, public events: Events) {
     this.menuCtrl.enable(false, 'myMenu');
+  }
+
+  createUser(user) {
+    this.events.publish('user:created', user, Date.now());
   }
 
   login(user) {
@@ -23,6 +28,7 @@ export class LoginPage {
       console.log(res);
       this._use.goMaps(res, MapsPage); 
     });
+    this.createUser(user);
   }
 
   routeToRegister() {

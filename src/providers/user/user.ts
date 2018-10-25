@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { App } from 'ionic-angular';
+
 /*
   Generated class for the UserProvider provider.
 
