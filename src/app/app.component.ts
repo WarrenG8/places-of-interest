@@ -35,7 +35,8 @@ export class MyApp {
     public keyboard: Keyboard,
     public _user: UserProvider,
     public events: Events
-    ) {
+    ) 
+  {
     this.initializeApp();
     this.nearbyPlacesArr = this.map.nearbyPlacesArr;
     events.subscribe('user:created', (user, time) => {
